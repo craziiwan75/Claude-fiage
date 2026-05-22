@@ -34,10 +34,6 @@ jobs:
             # 拉取最新代码
             git pull origin main
 
-            # 预拉取基础镜像（直接用南京大学镜像完整地址）
-            docker pull docker.nju.edu.cn/library/python:3.12-slim
-            docker tag docker.nju.edu.cn/library/python:3.12-slim python:3.12-slim
-
             # 重建并重启容器
             docker compose down
             DOCKER_BUILDKIT=0 docker compose up -d --build
