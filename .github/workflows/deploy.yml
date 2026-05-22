@@ -34,9 +34,12 @@ jobs:
             # 拉取最新代码
             git pull origin main
 
-            # 预拉取基础镜像（绕过 Docker Hub 限制）
-            docker pull kxkj5okf.mirror.aliyuncs.com/library/python:3.12-slim
-            docker tag kxkj5okf.mirror.aliyuncs.com/library/python:3.12-slim python:3.12-slim
+            # 更新镜像加速（南京大学 + 阿里云）
+            tee /etc/docker/daemon.json <<<'{"registry-mirrors":["https://docker.nju.edu.cn","https://kxkj5okf.mirror.aliyuncs.com"]}'
+            systemctl daemon-reload && systemctl restart docker
+
+            # 预拉取基础镜像
+            docker pull python:3.12-slim
 
             # 重建并重启容器
             docker compose down
