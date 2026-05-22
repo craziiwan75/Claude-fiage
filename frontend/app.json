@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "工蜂办公",
+    "slug": "gongfeng-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "ios": { "supportsTablet": false },
+    "android": { "package": "cn.gongfeng.app" },
+    "extra": {
+      "apiBaseUrl": "http://10.0.2.2:5000"
+    }
+  }
+}

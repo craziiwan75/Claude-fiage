@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Environment files (sensitive)
+.env
+backend/.env
+
+# Logs
+logs/
+*.log
+
+# Node
+node_modules/
+.expo/
+.expo-shared/
+dist/
+web-build/
+npm-debug.*
+
+# Keys / certs
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+
+# OS
+.DS_Store
+Thumbs.db

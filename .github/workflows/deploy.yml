@@ -1,0 +1,41 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            set -e
+
+            DEPLOY_DIR=/opt/gongfeng-app
+
+            # 首次部署：克隆仓库
+            if [ ! -d "$DEPLOY_DIR/.git" ]; then
+              git clone https://github.com/craziiwan75/Claude-fiage.git $DEPLOY_DIR
+            fi
+
+            cd $DEPLOY_DIR
+
+            # 拉取最新代码
+            git pull origin main
+
+            # 重建并重启容器
+            docker compose down
+            docker compose up -d --build
+
+            echo "Deployment complete"
