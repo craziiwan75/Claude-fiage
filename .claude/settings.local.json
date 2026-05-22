@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Invoke-RestMethod \"https://api.github.com/repos/craziiwan75/Claude-fiage/actions/runs?per_page=3\" | Select-Object -ExpandProperty workflow_runs | Select-Object status, conclusion, created_at, @{n='url';e={$_.html_url}})"
+    ]
+  }
+}
