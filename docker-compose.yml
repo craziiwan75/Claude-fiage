@@ -19,7 +19,7 @@ services:
       - ./backend/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
 
   backend:
-    image: crpi-humtme11he2862ru.cn-hangzhou.personal.cr.aliyuncs.com/gongfeng/gongfeng-backend:latest
+    image: gongfeng-backend:latest
     container_name: gongfeng-backend
     restart: unless-stopped
     environment:
